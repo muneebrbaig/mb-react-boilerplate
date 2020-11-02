@@ -1,1 +1,1 @@
-export const footerText = `The mymo portal © ${(new Date()).getFullYear()}`;
+export const footerText = `mb react boilerplate © ${(new Date()).getFullYear()}`;

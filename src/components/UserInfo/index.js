@@ -3,14 +3,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { Avatar, Popover } from "antd";
 import { Link } from "react-router-dom";
 
-import { userSignOut } from "appRedux/actions/auth.actions";
+//import { userSignOut } from "appRedux/actions/auth.actions";
 
 const UserInfo = () => {
   const dispatch = useDispatch();
   const { userImage } = useSelector(({ auth }) => auth);
   const logout = () => {
-    dispatch(userSignOut());
-    window.location = "/portal-web";
+    //dispatch(userSignOut());
+    window.location = "/home";
   };
   const userMenuOptions = (
     <ul className="gx-user-popover">

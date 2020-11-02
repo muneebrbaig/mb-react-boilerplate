@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { submitLogin } from "appRedux/thunks";
-import { hideMessage } from "appRedux/actions/auth.actions";
+import { useDispatch, useSelector } from "react-redux"; 
 
 import jwtDecode from "jwt-decode";
 
@@ -17,9 +15,9 @@ const FormItem = Form.Item;
 
 const Continue = (props) => {
   const dispatch = useDispatch();
-  const { token, signInError, showMessage } = useSelector(({ auth }) => auth);
+  
   const [grNo, setGrNo] = useState("");
-
+/*
   useEffect(() => {
     if (!utils.isEmpty(token)) {
       props.history.push("/");
@@ -31,9 +29,9 @@ const Continue = (props) => {
     } else {
       props.history.push("/");
     }
-  }, []);
+  }, []);*/
 
-  useEffect(() => {
+  /**useEffect(() => {
     if (!utils.isEmpty(token)) {
       props.history.push("/");
     }
@@ -43,13 +41,14 @@ const Continue = (props) => {
         dispatch(hideMessage());
       }, 50);
     }
-  }, [signInError, showMessage]);
+  }, [signInError, showMessage]);*/
 
+  /*
   useEffect(() => {
     if (!utils.isEmpty(token)) {
       props.history.push("/");
     }
-  }, [token]);
+  }, [token]);*/
 
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
@@ -61,7 +60,7 @@ const Continue = (props) => {
       ...values,
       email: grNo,
     };
-    dispatch(submitLogin(loginModel));
+    console.log(loginModel);
   };
 
   return (

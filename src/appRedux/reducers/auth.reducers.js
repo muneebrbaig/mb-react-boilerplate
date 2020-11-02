@@ -18,18 +18,17 @@ import {
   WELCOME_ERROR_RESET,
   //USER_IMAGE_SET
 } from "constants/ActionTypes";
-import { storage } from "@mb";
-import { ADMIN_LOGIN_ERROR, ADMIN_LOGIN_SUCCESS } from "../actions";
+//import { storage } from "@mb";
 const INIT_STATE = {
   loader: false,
   alertMessage: "",
   showMessage: false,
-  token: storage.getObject("token"),
+  token: "",
   tokenVerified: false,
   signInError: { failed: true },
   initURL: "",
-  authUser: storage.getObject("authUser"),
-  userImage: storage.getObject("imageLink"),
+  authUser: { },
+  userImage: "",
   passwordChangedInfo: { isValid: false },
   passwordResetInfo: null,
   userRegInfo: null,
@@ -69,12 +68,11 @@ export default (state = INIT_STATE, action) => {
       return {
         ...state,
         authUser: action.payload,
-        userImage: storage.getObject("imageLink"),
+        userImage: "",
         tokenVerified: true,
       };
     }
 
-    case ADMIN_LOGIN_SUCCESS:
     case USER_TOKEN_SET: {
       return {
         ...state,
@@ -82,7 +80,6 @@ export default (state = INIT_STATE, action) => {
         tokenVerified: true,
       };
     }
-    case ADMIN_LOGIN_ERROR:
     case USER_TOKEN_FAILED: {
       return {
         ...state,

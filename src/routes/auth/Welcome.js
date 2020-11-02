@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchWelcomeInfo, resetWelcomeErroInfo } from "appRedux/thunks";
 
 import { Button, Form, Input, message } from "antd";
 import { Link } from "react-router-dom";
@@ -28,7 +27,6 @@ const Welcome = (props) => {
         welcomeError.message ||
           "Something went wrong, please contact Administrator."
       );
-      dispatch(resetWelcomeErroInfo());
       return;
     }
     if (utils.isEmpty(continueUrl)) {
@@ -49,7 +47,6 @@ const Welcome = (props) => {
       ...values,
     };
     console.log(studentToRegister);
-    dispatch(fetchWelcomeInfo(studentToRegister));
   };
 
   return (
@@ -62,7 +59,7 @@ const Welcome = (props) => {
                 {/* <img src="https://via.placeholder.com/272x395" alt="Neature" /> */}
               </div>
               <div className="gx-app-logo-wid">
-                <h1>Welcome to mymo</h1>
+                <h1>Welcome to mb</h1>
                 <p>
                   Please provide the Registration Number to continue...
                 </p>
@@ -72,7 +69,7 @@ const Welcome = (props) => {
               </div>
               <div className="gx-app-logo">
                 <img
-                  alt="mymo"
+                  alt="mb"
                   src={require("assets/images/logo.png")}
                 />
               </div>
