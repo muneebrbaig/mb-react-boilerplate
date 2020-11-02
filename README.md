@@ -55,6 +55,8 @@ The app is created with an opinionated architecture based upon the work from [mb
 *License info will go here*
 
 ## Acknowledgments
+[@Faris-AH](https://github.com/Faris-AH) for his continued support on technical issues I faced
+@Ubaid for standards and guidance
 
 
 
