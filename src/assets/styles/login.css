@@ -1,0 +1,28 @@
+.login-background {
+  background-image: url(../images/Portal_Login.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  height: 100%;
+}
+/* 
+html { 
+  background: url(../images/Portal_Login.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+} */
+
+/* body {
+  margin: 0 !important;
+padding: 0 !important;
+
+  /** background image */
+  /*background-image: url(../images/Portal_Login.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+} */

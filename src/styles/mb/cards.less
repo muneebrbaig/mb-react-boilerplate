@@ -1,0 +1,66 @@
+.@{class-prefix}-blue-purple-gradient {
+  .horizontal-gradient(#080848, #835cf0);
+}
+.@{class-prefix}-grey-green-gradient {
+  .horizontal-gradient(#cfcadb, #4de0e6);
+}
+.@{class-prefix}-orange-blue-gradient {
+  .horizontal-gradient(#d18331, #f3cfa9);
+}
+.card-body-gradient {
+  .horizontal-gradient(@card-body-color, @card-body-color);
+}
+.card-body-greeting {
+  .horizontal-gradient(@card-body-greetings, @card-body-greetings);
+}
+
+// .@{class-prefix}-pink-purple-gradient-reverse {
+//   .horizontal-gradient(#872776, #352883);
+// }
+
+// .@{class-prefix}-blue-cyan-gradient {
+//   .corner-left-gradient(#45d1e6, #4363c6);
+// }
+
+.card-head-generic (@bgColor) {
+  & .ant-card-head {
+    background-color: @bgColor;
+    color: @white-color;
+    padding-top: 20px;
+
+    & h1,
+    h3 {
+      color: @white-color;
+    }
+  }
+
+  & .ant-card-head-title {
+    .flex-display(flex, column, nowrap);
+  }
+
+  & .ant-card-body {
+    padding: 1rem;
+  }
+}
+
+.card-head-timetable {
+  .card-head-generic(#006653);
+}
+
+.card-head-notification {
+  .card-head-generic(#ffa500);
+}
+.card-head-diary {
+  .card-head-generic(#9acd32);
+}
+.card-head-event {
+  .card-head-generic(#ffd700);
+}
+
+.card-head-info {
+  .card-head-generic(@info-color);
+}
+
+.card-head-success {
+  .card-head-generic(@success-color);
+}
