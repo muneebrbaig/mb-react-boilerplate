@@ -1,4 +1,4 @@
-# MyMo work Project Home
+# My React Boilerplate Home
 ## Domain
 ### Frontend System
 Frontend system details will go here
@@ -6,7 +6,7 @@ Frontend system details will go here
 
 ## Development
 
-VS Code is used to develope backend and frontend of the system. The Backend componenets are developed using DotNet Core 3.1 and Frontend components are developed using React. 
+VS Code is used to develope backend and frontend of the system. Frontend components are developed using React. 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app), and uses [AntDesign](https://ant.design/components/overview/) for frontend react components.
 
 
@@ -47,7 +47,7 @@ See also the list of [contributors](https://github.com/muneebrbaig) who particip
 
 ### Architecture
 
-The app is created with an opinionated architecture based upon the work from [react-opinionated-boilerplate](add-link-here)
+The app is created with an opinionated architecture based upon the work from [mb-react-boilerplate](https://github.com/muneebrbaig/mb-react-boilerplate)
 
 
 ## License
