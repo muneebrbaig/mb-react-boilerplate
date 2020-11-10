@@ -13,17 +13,34 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ### Built with
 
 Following Software / Plugins are required to be installed on Development Machcine
-* Visual Studio Code
+* [Visual Studio Code](https://code.visualstudio.com/download)
+* [node](https://nodejs.org/en/download/)
+* [Yarn Package Manager](https://classic.yarnpkg.com/en/docs/getting-started)
+  * Yarn is the package manager to install dependencies from `package.json` and creates `yarn.lock` file. Alternatively, [npm](https://www.npmjs.com/get-npm) could be used, which comes with `node`.
 
 ### Dependencies
 
-The app depends upon yarn and node to run the project. Before running use
-`yarn`
-which will install dependencies from package.json and create yarn.lock file. Alternatively, npm could be used.
+The app depends upon yarn and node to run the project. Make sure you have node and yarn installed on your machine:
+
+`node --version`
+
+`yarn --version`
+
 
 ### How to run the Project
 
-Use `yarn run start:dev` to run the project
+Following command is used to run the project:
+
+ `yarn run start:dev` 
+
+This will launch the application in your default browser on port `3000`. If this port is busy following prompt will ask you to launch the application using some other free port:
+
+```
+ Something is already running on port 3000.
+
+Would you like to run the app on another port instead? (Y/n)
+```
+entering `y` will launch the application with some other port, like `3001`.
 
 
 ### Coding style guide lines
