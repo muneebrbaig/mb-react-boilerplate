@@ -1,27 +1,27 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Avatar, Popover } from "antd";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
-//import { userSignOut } from "appRedux/actions/auth.actions";
+import { userSignOut } from "appRedux/thunks";
 
 const UserInfo = () => {
   const dispatch = useDispatch();
   const { userImage } = useSelector(({ auth }) => auth);
   const logout = () => {
-    //dispatch(userSignOut());
-    window.location = "/home";
+    dispatch(userSignOut());
+    window.location = "/";
   };
   const userMenuOptions = (
     <ul className="gx-user-popover">
       {/* <li>My Profile</li>
         <li>Settings</li> */}
-      <li>
+      {/* <li>
         <Link to="/ChangePassword">
           <i className="reset-password" />
           Change Password
         </Link>
-      </li>
+      </li> */}
       <li onClick={logout}>Logout</li>
     </ul>
   );

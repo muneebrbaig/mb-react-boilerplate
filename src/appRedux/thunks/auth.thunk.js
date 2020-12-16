@@ -16,9 +16,10 @@ import {
   WELCOME_SUCCESS,
   WELCOME_ERROR,
   WELCOME_ERROR_RESET,
+  SIGNOUT_USER_SUCCESS,
+  RESET_ALL,
 } from "../../constants/ActionTypes";
 
-import jwtService from "appServices/jwtService";
 import { utils } from "@mb";
 
 const submitResetAuthInfo = () => (dispatch) => {
@@ -29,50 +30,11 @@ const submitLogin = ({ email, password }) => (dispatch) => {
   dispatch(showAuthLoader());
   dispatch({ type: FETCH_START });
 
-  jwtService
-    .signInWithEmailAndPassword(email, password)
-    .then((authInfo) => {
-      if (!utils.isEmpty(authInfo)) {
-        dispatch({ type: FETCH_SUCCESS });
-        dispatch({ type: USER_TOKEN_SET, payload: authInfo.token });
-        dispatch({ type: USER_DATA, payload: authInfo.basicProfile });
-      } else {
-        dispatch(
-          common.fetchError(
-            { failed: true, message: "Sign in error, please try again." },
-            USER_TOKEN_FAILED
-          )
-        );
-      }
-      dispatch(hideAuthLoader());
-    })
-    .catch((error) => {
-      debugger;
-      console.error(`Error****:`, error);
+  dispatch({ type: FETCH_SUCCESS });
+  /*dispatch({ type: USER_TOKEN_SET, payload: authInfo.token });
+  dispatch({ type: USER_DATA, payload: authInfo.basicProfile });*/
 
-      if (error && error.loginRestrictionReason) {
-        dispatch(
-          common.fetchError(
-            { failed: true, message: error.loginRestrictionReason },
-            USER_TOKEN_FAILED
-          )
-        );
-      } else {
-        dispatch(
-          common.fetchError(
-            { failed: true, message: "Sign in error, please try again." },
-            USER_TOKEN_FAILED
-          )
-        );
-      }
-
-      dispatch(hideAuthLoader());
-
-      return dispatch({
-        type: FETCH_ERROR,
-        payload: error,
-      });
-    });
+  dispatch(hideAuthLoader());
 };
 
 const showAuthLoader = () => {
@@ -87,95 +49,15 @@ const hideAuthLoader = () => {
   };
 };
 
-const submitChangePassword = ({ currentPassword, password }) => async (
-  dispatch
-) => {
-  try {
-    dispatch(common.fetchStart());
-    jwtService
-      .changePassword(currentPassword, password)
-      .then((changedPasswordInfo) => {
-        if (changedPasswordInfo.isValid) {
-          dispatch(common.fetchSuccess());
-        } else {
-          dispatch(common.fetchError(changedPasswordInfo.message));
-        }
-        dispatch({ type: PASSWORD_CHANGED, payload: changedPasswordInfo });
-      })
-      .catch((error) => {
-        debugger;
-        console.error(`Error****:`, error);
-        return dispatch(common.fetchError(error));
-      });
-  } catch (error) {
-    debugger;
-    return dispatch(common.fetchError(error));
-  }
+const userSignOut = () => {
+  return (dispatch) => {
+    dispatch({ type: FETCH_START });
+    // authService.signOut();
+    setTimeout(() => {
+      dispatch({ type: FETCH_SUCCESS });
+      dispatch({ type: SIGNOUT_USER_SUCCESS });
+      dispatch({ type: RESET_ALL });
+    }, 2000);
+  };
 };
-
-const submitForgotPassword = ({ grNo, phone }) => async (dispatch) => {
-  try {
-    dispatch(common.fetchStart());
-    jwtService
-      .forgotPassword(grNo, phone)
-      .then((forgotPasswordInfo) => {
-        if (forgotPasswordInfo.isValid) {
-          dispatch(common.fetchSuccess());
-        } else {
-          dispatch(
-            common.fetchError(forgotPasswordInfo.message, PASSWORD_RESET_FAILED)
-          );
-        }
-        dispatch({ type: PASSWORD_RESET, payload: forgotPasswordInfo });
-      })
-      .catch((error) => {
-        debugger;
-        console.error(`Error****:`, error);
-        return dispatch(common.fetchError(error));
-      });
-  } catch (error) {
-    debugger;
-    return dispatch(common.fetchError(error));
-  }
-};
-
-const fetchWelcomeInfo = (grNo) => async (dispatch) => {
-  jwtService
-    .welcome(grNo)
-    .then((welcomeInfo) => {
-      if (!utils.isEmpty(welcomeInfo)) {
-        dispatch(common.fetchSuccessWithData(WELCOME_SUCCESS, welcomeInfo));
-      } else {
-        dispatch(
-          common.fetchError(
-            {
-              failed: true,
-              message: "Unable to verify user, please contact Administrator.",
-            },
-            WELCOME_ERROR
-          )
-        );
-      }
-    })
-    .catch((error) => {
-      debugger;
-      console.error(`Error****:`, error);
-
-      return dispatch({
-        type: WELCOME_ERROR,
-        payload: { failed: true, error },
-      });
-    });
-};
-
-const resetWelcomeErroInfo = () => async (dispatch) =>
-  dispatch(common.fetchSuccess(WELCOME_ERROR_RESET));
-
-export {
-  submitChangePassword,
-  submitResetAuthInfo,
-  submitLogin,
-  submitForgotPassword,
-  fetchWelcomeInfo,
-  resetWelcomeErroInfo,
-};
+export { submitResetAuthInfo, submitLogin, userSignOut };

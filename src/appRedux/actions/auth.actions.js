@@ -1,48 +1,47 @@
-import {
-  SHOW_MESSAGE,
-  HIDE_MESSAGE,
-  FETCH_ERROR,
-  FETCH_START,
-  FETCH_SUCCESS,
-  INIT_URL,
-  SIGNOUT_USER_SUCCESS,
-  USER_DATA,
-  RESET_ALL,
-  SIGNUP_USER_SUCCESS,
-} from "../../constants/ActionTypes";
-
 export const LOGIN_ERROR = "LOGIN_ERROR";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const ALLOW_SIGNIN = "ALLOW_SIGNIN";
+
+//Auth const
+export const SIGNUP_USER = "SIGNUP_USER";
+export const SIGNUP_USER_SUCCESS = "SIGNUP_USER_SUCCESS";
+export const SIGNIN_GOOGLE_USER = "SIGNIN_GOOGLE_USER";
+export const SIGNIN_GOOGLE_USER_SUCCESS = "SIGNIN_GOOGLE_USER_SUCCESS";
+export const SIGNIN_FACEBOOK_USER = "SIGNIN_FACEBOOK_USER";
+export const SIGNIN_FACEBOOK_USER_SUCCESS = "SIGNIN_FACEBOOK_USER_SUCCESS";
+export const SIGNIN_TWITTER_USER = "SIGNIN_TWITTER_USER";
+export const SIGNIN_TWITTER_USER_SUCCESS = "SIGNIN_TWITTER_USER_SUCCESS";
+export const SIGNIN_GITHUB_USER = "SIGNIN_GITHUB_USER";
+export const SIGNIN_GITHUB_USER_SUCCESS = "signin_github_user_success";
+
+export const SIGNIN_USER = "SIGNIN_USER";
+export const SIGNIN_USER_SUCCESS = "SIGNIN_USER_SUCCESS";
+export const SIGNOUT_USER = "SIGNOUT_USER";
+export const SIGNOUT_USER_SUCCESS = "SIGNOUT_USER_SUCCESS";
+export const RESET_ALL = "RESET_ALL";
+
+export const INIT_URL = "INIT_URL";
+export const RESET_AUTH_DATA = "RESET_AUTH_DATA";
+export const USER_DATA = "user_data";
+export const USER_TOKEN_SET = "user_token_set";
+export const USER_TOKEN_FAILED = "user_token_failed";
+export const USER_IMAGE_SET = "USER_IMAGE_SET";
+export const PASSWORD_CHANGED = "PASSWORD_CHANGED";
+export const PASSWORD_RESET = "PASSWORD_RESET";
+export const PASSWORD_RESET_FAILED = "PASSWORD_RESET_FAILED";
+
+export const WELCOME_LOADING = "WELCOME_LOADING";
+export const WELCOME_SUCCESS = "WELCOME_SUCCESS";
+export const WELCOME_ERROR = "WELCOME_ERROR";
+export const WELCOME_ERROR_RESET = "WELCOME_ERROR_RESET";
+
+export const VERIFY_AUTH_LOADING = "VERIFY_AUTH_LOADING";
+export const VERIFY_AUTH_SUCCESS = "VERIFY_AUTH_SUCCESS";
+export const VERIFY_AUTH_ERROR = "VERIFY_AUTH_ERROR";
 
 export const setInitUrl = (url) => {
   return {
     type: INIT_URL,
     payload: url,
-  };
-};
-
-export const showAuthMessage = (message) => {
-  return {
-    type: SHOW_MESSAGE,
-    payload: message,
-  };
-};
-
-export const hideMessage = () => {
-  return {
-    type: HIDE_MESSAGE,
-  };
-};
-
-export const userSignOut = () => {
-  return (dispatch) => {
-    dispatch({ type: FETCH_START });
-    //jwtService.signOut();
-    setTimeout(() => {
-      dispatch({ type: FETCH_SUCCESS });
-      dispatch({ type: SIGNOUT_USER_SUCCESS });
-      dispatch({ type: RESET_ALL });
-    }, 2000);
   };
 };
